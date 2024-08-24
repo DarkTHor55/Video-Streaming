@@ -9,14 +9,14 @@ import java.util.List;
 
 public interface IVideoService {
 //    save video
-    Video savevideo(VideoRequest video , MultipartFile multipartFile) throws IOException;
+    Video savevideo(final VideoRequest video ,final MultipartFile multipartFile) throws IOException;
 
 //    get all video
     List<Video> getAllVideo();
 
 //    get by id
-    Video getVideoById(String id);
+    Video getVideoById(final String id);
 //    get by title
-    Video getVideoByTitle(String title);
+    Video getVideoByTitle(final String title);
 
 }

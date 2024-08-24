@@ -1,9 +1,11 @@
 package com.datkthor.streaming.Service.Impl;
 
 import com.datkthor.streaming.Model.Video;
+import com.datkthor.streaming.Repository.VideoRepository;
 import com.datkthor.streaming.Request.VideoRequest;
 import com.datkthor.streaming.Service.IVideoService;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,10 @@ import java.util.UUID;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class VideoServiceImpl implements IVideoService {
+    private final VideoRepository videoRepository;
+    private
     @Value("${files.video}")
     String DIR;
 
@@ -39,7 +44,7 @@ public class VideoServiceImpl implements IVideoService {
         }
     }
     @Override
-    public Video savevideo(VideoRequest video, MultipartFile multipartFile) {
+    public Video savevideo(final VideoRequest v, final MultipartFile multipartFile) {
 
 
 
@@ -63,16 +68,19 @@ public class VideoServiceImpl implements IVideoService {
 //         copy file to the folder
             Files.copy(contentStream,path, StandardCopyOption.REPLACE_EXISTING);  // first perameter from where we copying file and second perameter from where we copied file third handle if files already exites like replace it  or overwrite
 
-//        video metadata
+//        v metadata
+
 
 //         metadata save
-            Video video1=Video.builder().videoId(UUID.randomUUID().toString()).title(video.getTitle()).description(video.getDescription()).build();
+            Video video=Video.builder().videoId(UUID.randomUUID().toString()).title(v.getTitle()).description(v.getDescription()).contentType(contentType).filepath(path.toString()).build();
+//            save
+            return videoRepository.save(video);
+
         }catch (IOException e){
             System.out.println(e);
-        }
+            return null;
 
-//
-        return null;
+        }
     }
 
     @Override
