@@ -1,0 +1,13 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íª‘8Ê£¹¡˜2
+o	java:S116"NRename this field "DIR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öîÿİüÿÿÿÿ8Ì£¹¡˜2
+\
+java:S18542"?Remove this useless assignment to local variable "contentType".(ş€ëŠ8Ğ£¹¡˜2
+W
+java:S1854E":Remove this useless assignment to local variable "video1".(üÉø¸8Ğ£¹¡˜2
+M
+java:S14812"0Remove this unused "contentType" local variable.(ş€ëŠ8Ñ£¹¡˜2
+G	java:S106="+Replace this use of System.out by a logger.(ÍÎÉ 8Ò£¹¡˜2
+H
+java:S1481E"+Remove this unused "video1" local variable.(üÉø¸8Ó£¹¡˜2
+L	java:S106G"+Replace this use of System.out by a logger.(¨¶ÑÍşÿÿÿÿ8Ó£¹¡˜2
