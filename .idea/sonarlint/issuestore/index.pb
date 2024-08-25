@@ -1,22 +1,4 @@
 
-I
-Streamming_app/.gitignore,f/7/f70093236a203fc4dfc10ba91a76a5b4326467e2
-‚
-RStreamming_app/src/main/java/com/datkthor/streamming/StreammingAppApplication.java,5/0/504b85d8485203bfe9e841d11b8066330b0477d6
-u
-EStreamming_app/src/main/java/com/datkthor/streamming/Model/Video.java,8/1/81d4f4bea272887460d6ff4c775d06c1a411329e
-„
-TStreamming_app/src/main/java/com/datkthor/streamming/Repository/VideoRepository.java,2/c/2c0af8d7c802adfeb3aa1b06d64169407cbf974a
-
-OStreamming_app/src/main/java/com/datkthor/streamming/Service/IVideoService.java,7/1/71d28d6d56d06cd79d7a3f2c7e41d1996023f44d
-‡
-WStreamming_app/src/main/java/com/datkthor/streamming/Service/Impl/VideoServiceImpl.java,b/2/b253ceafc4ac07440e1c849f3eab2cfde9f5dad1
-„
-TStreamming_app/src/main/java/com/datkthor/streamming/Controller/VideoController.java,c/0/c0fdccd50540700b3f36ca997e9f3d77988f9af6
-~
-NStreamming_app/src/main/java/com/datkthor/streamming/Request/VideoRequest.java,9/1/9113304cd3693d42400775a3a361ab356a6c60c9
-€
-PStreamming_app/src/main/java/com/datkthor/streamming/Response/VideoResponse.java,d/5/d5d44e8193a475a52fac9111ba8e82403b2c7b44
 ~
 NStreaming_app/src/main/java/com/datkthor/streaming/Response/VideoResponse.java,0/d/0d5f961e8ca4fd4cbbd0476c833e4da20d7d756e
 ‚
@@ -33,3 +15,7 @@ s
 CStreaming_app/src/main/java/com/datkthor/streaming/Model/Video.java,c/c/ccefaa7d1e721379fd56112efc9de6ba84f9debc
 |
 LStreaming_app/src/main/java/com/datkthor/streaming/Request/VideoRequest.java,b/2/b23ef6a015540d53b32c2309e136bf112ce834fb
+|
+LStreaming_app/src/main/java/com/datkthor/streaming/Configuration/Config.java,1/f/1f9816f50aaa32ccfde35c441485a0e8331567b7
+E
+Streaming_app/pom.xml,0/d/0d5c4e2303dd33ebdcc9efc386992759a4a2328c
