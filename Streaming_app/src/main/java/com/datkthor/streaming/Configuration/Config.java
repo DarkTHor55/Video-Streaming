@@ -21,6 +21,7 @@ public class Config {
                 auth -> auth.requestMatchers("api/v1/videos").permitAll()
                         .anyRequest().authenticated()
         );
+
         http.cors(cors -> cors.configurationSource(apiConfigurationSource()));
         return http.build();
 
