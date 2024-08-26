@@ -19,3 +19,5 @@ LStreaming_app/src/main/java/com/datkthor/streaming/Request/VideoRequest.java,b
 LStreaming_app/src/main/java/com/datkthor/streaming/Configuration/Config.java,1/f/1f9816f50aaa32ccfde35c441485a0e8331567b7
 E
 Streaming_app/pom.xml,0/d/0d5c4e2303dd33ebdcc9efc386992759a4a2328c
+‚
+RStreaming_app/src/main/java/com/datkthor/streaming/Configuration/AppConstants.java,c/c/ccca0dfd8617405001fb723c354f12cbbc951d2c

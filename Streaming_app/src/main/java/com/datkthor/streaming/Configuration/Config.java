@@ -18,7 +18,7 @@ public class Config {
 
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(
-                auth -> auth.requestMatchers("api/v1/videos").permitAll()
+                auth -> auth.requestMatchers("api/v1/videos/**").permitAll()
                         .anyRequest().authenticated()
         );
 

@@ -1,2 +1,16 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‰²Êìúÿÿÿÿ8Å‹ ˜2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‰²Êìúÿÿÿÿ8Ç¨Úæ˜2
+f
+java:S2095`"IUse try-with-resources or close this "InputStream" in a "finally" clause.(ØàÔ8˜º–ç˜2
+b
+java:S1858/"E"getFilepath" returns a string, there's no need to call "toString()".(óÌÂ8í¨Úæ˜2
+j
+java:S18580"H"getContentType" returns a string, there's no need to call "toString()".(Ù ¬»ùÿÿÿÿ8í¨Úæ˜2
+o	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ÀÔşÿÿÿÿ8î¨Úæ˜2
+F	java:S106["+Replace this use of System.out by a logger.(Õ£8àİ”ç˜2
+l
+java:S2674b"JCheck the return value of the "skip" call to see how many bytes were read.(×¹úúÿÿÿÿ8ò¨Úæ˜2
+G
+java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8¤º–ç˜2
+X
+java:S1128"6Remove this unused import 'java.rmi.server.RemoteRef'.(÷ëŒ®şÿÿÿÿ8¤º–ç˜2
