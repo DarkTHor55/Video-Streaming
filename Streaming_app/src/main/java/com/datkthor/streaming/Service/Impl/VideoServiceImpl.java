@@ -30,8 +30,8 @@ public class VideoServiceImpl implements IVideoService {
     @Value("${files.video}")
     String DIR;
 
-    @Value("${files.video.hsl}")
-    String HSL_DIR;
+    @Value("${files.video.hls}")
+    String HLS_DIR;
     @PostConstruct
     public void init() {
         File file = new File(DIR);
@@ -53,7 +53,7 @@ public class VideoServiceImpl implements IVideoService {
 //        }
 //         we can use createdirectories method also
         try {
-            Files.createDirectories(Paths.get(HSL_DIR));
+            Files.createDirectories(Paths.get(HLS_DIR));
         }catch (IOException e){
             System.out.println("Already exits");
         }
@@ -132,7 +132,7 @@ return video1;
 //            Files.createDirectories(Paths.get(output720));
 //            Files.createDirectories(Paths.get(output1080));
 
-            Path outputPath = Paths.get(HSL_DIR, id);
+            Path outputPath = Paths.get(HLS_DIR, id);
 
             Files.createDirectories(outputPath);
 
