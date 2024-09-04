@@ -19,7 +19,7 @@ function App() {
           <div className="w-1/2">
             <h1 className="text-white text-center text-xl mb-4">
               Playing Video
-            </h1>
+            </h1>filepath
             <video
               className="w-full rounded-lg shadow-lg"
               src={`http://localhost:8080/api/v1/videos/stream/range/${videoId}`}

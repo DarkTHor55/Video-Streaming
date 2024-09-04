@@ -1,16 +1,22 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‰²Êìúÿÿÿÿ8Ç¨Úæ˜2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‰²Êìúÿÿÿÿ8¾ÿ’é˜2
 f
-java:S2095`"IUse try-with-resources or close this "InputStream" in a "finally" clause.(ØàÔ8˜º–ç˜2
+java:S2095t"IUse try-with-resources or close this "InputStream" in a "finally" clause.(ØàÔ8Ûÿ’é˜2
 b
-java:S1858/"E"getFilepath" returns a string, there's no need to call "toString()".(óÌÂ8í¨Úæ˜2
+java:S18583"E"getFilepath" returns a string, there's no need to call "toString()".(óÌÂ8âÿ’é˜2
 j
-java:S18580"H"getContentType" returns a string, there's no need to call "toString()".(Ù ¬»ùÿÿÿÿ8í¨Úæ˜2
-o	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ÀÔşÿÿÿÿ8î¨Úæ˜2
-F	java:S106["+Replace this use of System.out by a logger.(Õ£8àİ”ç˜2
+java:S18584"H"getContentType" returns a string, there's no need to call "toString()".(Ù ¬»ùÿÿÿÿ8âÿ’é˜2
+o	java:S100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ÀÔşÿÿÿÿ8äÿ’é˜2
+X	java:S125["<This block of commented-out lines of code should be removed.(İÓĞ˜8èÿ’é˜2
+F	java:S106o"+Replace this use of System.out by a logger.(Õ£8èÿ’é˜2
 l
-java:S2674b"JCheck the return value of the "skip" call to see how many bytes were read.(×¹úúÿÿÿÿ8ò¨Úæ˜2
+java:S2674v"JCheck the return value of the "skip" call to see how many bytes were read.(×¹úúÿÿÿÿ8èÿ’é˜2
+C
+java:S1905|"&Remove this unnecessary cast to "int".(·†š«8éÿ’é˜2
+L	java:S106~"+Replace this use of System.out by a logger.(‡Ÿ³Šøÿÿÿÿ8éÿ’é˜2
 G
-java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8¤º–ç˜2
+java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8ìÿ’é˜2
+n
+java:S1128"LRemove this unused import 'org.springframework.core.io.InputStreamResource'.(¡±ù”ıÿÿÿÿ8ìÿ’é˜2
 X
-java:S1128"6Remove this unused import 'java.rmi.server.RemoteRef'.(÷ëŒ®şÿÿÿÿ8¤º–ç˜2
+java:S1128"6Remove this unused import 'java.rmi.server.RemoteRef'.(÷ëŒ®şÿÿÿÿ8ìÿ’é˜2

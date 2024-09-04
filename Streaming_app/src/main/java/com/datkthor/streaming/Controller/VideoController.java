@@ -1,11 +1,14 @@
 package com.datkthor.streaming.Controller;
 
+import com.datkthor.streaming.Configuration.AppConstants;
 import com.datkthor.streaming.Model.Video;
 import com.datkthor.streaming.Request.VideoRequest;
 import com.datkthor.streaming.Response.VideoResponse;
 import com.datkthor.streaming.Service.Impl.VideoServiceImpl;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -28,6 +31,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/api/v1/videos")
 @RequiredArgsConstructor
+@Slf4j
 public class VideoController {
     private final VideoServiceImpl videoService;
 
@@ -78,50 +82,64 @@ public class VideoController {
 //        split range in array and assgin to rangest and rangeed
         String[] ranges = range.replace("bytes=", "").split("-");// now we have [st,ed]
         rangeSt = Long.parseLong(ranges[0]);
-//        check if we dont have rangeend then we set file length as a rangeed and it will return full video
-        if (ranges.length > 1) {
-            rangeEd = Long.parseLong(ranges[1]);
-        } else {
-            rangeEd = fileLength - 1;
-        }
-//        if given range is bigger then last range then file length then set rangeed to filelength
-        if (rangeEd > fileLength - 1) {
-            rangeEd = fileLength - 1;
+
+////        check if we dont have rangeend then we set file length as a rangeed and it will return full video
+//        if (ranges.length > 1) {
+//            rangeEd = Long.parseLong(ranges[1]);
+//        } else {
+//            rangeEd = fileLength - 1;
+//        }
+////        if given range is bigger then last range then file length then set rangeed to filelength
+//        if (rangeEd > fileLength - 1) {
+//            rangeEd = fileLength - 1;
+//        }
+
+
+
+//         set rangeEd of 1 mb
+        rangeEd = rangeSt+ AppConstants.CHUNKS-1;
+        if (rangeEd >= fileLength) {
+            rangeEd = fileLength-1;
         }
         System.out.println(rangeSt +".............................................................................."+rangeEd);
-
-
         InputStream inputStream;
         try {
             inputStream = Files.newInputStream(path);
 //            skip bytes before rangestart
             inputStream.skip(rangeSt);
 
+            //      full length of content which we wanna return
+            long contentLength = rangeEd - rangeSt + 1;
+
+            byte[] data = new byte[(int)contentLength];
+            int read=inputStream.read(data, 0, (int)data.length );
+
+            System.out.println("read (number of bytes " + read);
+
+//         create Header
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Content-Range", "bytes " + rangeSt + "-" + rangeEd + "/" + fileLength);
+            // it will ensure that no cache will store and in each call new content willfetch
+            headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+            headers.add("Pragma", "no-cache");
+
+            headers.add("Expires", "0");
+            headers.add("X-Content-Type-Options", "nosniff");
+//        how much data send to client by header
+            headers.setContentLength(contentLength);
+
+
+            return ResponseEntity.
+                    status(HttpStatus.PARTIAL_CONTENT)
+                    .headers(headers)
+                    .contentType(MediaType.parseMediaType(contentType))
+                    .body(new ByteArrayResource(data))
+                    ;
+
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-//      full length of content which we wanna return
-        long contentLength = rangeEd - rangeSt + 1;
 
-//         create Header
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Content-Range", "bytes " + rangeSt + "-" + rangeEd + "/" + fileLength);
-        // it will ensure that no cache will store and in each call new content willfetch
-        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-        headers.add("Pragma", "no-cache");
-
-        headers.add("Expires", "0");
-        headers.add("X-Content-Type-Options", "nosniff");
-//        how much data send to client by header
-        headers.setContentLength(contentLength);
-
-
-        return ResponseEntity.
-                status(HttpStatus.PARTIAL_CONTENT)
-                .headers(headers)
-                .contentType(MediaType.parseMediaType(contentType))
-                .body(new InputStreamResource(inputStream))
-                ;
 
     }
 }

@@ -27,10 +27,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class VideoServiceImpl implements IVideoService {
     private final VideoRepository videoRepository;
-    private
     @Value("${files.video}")
     String DIR;
 
+    @Value("${files.video.hsl}")
+    String HSL_DIR;
     @PostConstruct
     public void init() {
         File file = new File(DIR);
@@ -41,6 +42,20 @@ public class VideoServiceImpl implements IVideoService {
         }else {
             log.info("Folder already  created at : " + file.getAbsolutePath());
 
+        }
+//        File file1 = new File(HSL_DIR);
+//        if(!file1.exists()){
+//            file1.mkdir();
+//            log.info("Folder created  at: " + file1.getAbsolutePath());
+//        }
+//        else {
+//            log.info("Folder already  created at : " + file1.getAbsolutePath());
+//        }
+//         we can use createdirectories method also
+        try {
+            Files.createDirectories(Paths.get(HSL_DIR));
+        }catch (IOException e){
+            System.out.println("Already exits");
         }
     }
     @Override
@@ -74,8 +89,9 @@ public class VideoServiceImpl implements IVideoService {
 //         metadata save
             Video video=Video.builder().videoId(UUID.randomUUID().toString()).title(v.getTitle()).description(v.getDescription()).contentType(contentType).filepath(path.toString()).build();
 //            save
-            return videoRepository.save(video);
-
+            Video video1 = videoRepository.save(video);
+            videoProcessing("031c5ff6-eb11-4f17-abea-7fccbdf9191a");
+return video1;
         }catch (IOException e){
             System.out.println(e);
             return null;
@@ -96,5 +112,52 @@ public class VideoServiceImpl implements IVideoService {
     @Override
     public Video getVideoByTitle(String title) {
         return null;
+    }
+
+    @Override
+    public String videoProcessing(String id) {
+        Video video = videoRepository.findById(id).orElseThrow(null);
+        String filePath = video.getFilepath();
+
+        //path where to store data:
+        Path videoPath = Paths.get(filePath);
+
+
+//        String output360=HSL_DIR+id+"/360p";
+//        String output720=HSL_DIR+id+"/720p";
+//        String output1080=HSL_DIR+id+"/1080p";
+
+        try {
+//            Files.createDirectories(Paths.get(output360));
+//            Files.createDirectories(Paths.get(output720));
+//            Files.createDirectories(Paths.get(output1080));
+
+            Path outputPath = Paths.get(HSL_DIR, id);
+
+            Files.createDirectories(outputPath);
+
+
+            String ffmpegCmd = String.format(
+                    "ffmpeg -i \"%s\" -c:v libx264 -c:a aac -strict -2 -f hls -hls_time 10 -hls_list_size 0 -hls_segment_filename \"%s/segment_%%3d.ts\"  \"%s/master.m3u8\" ",
+                    videoPath, outputPath, outputPath
+            );
+
+            System.out.println(ffmpegCmd);
+            //file this command
+            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", ffmpegCmd);
+            processBuilder.inheritIO();
+            Process process = processBuilder.start();
+            int exit = process.waitFor();
+            if (exit != 0) {
+                throw new RuntimeException("video processing failed!!");
+            }
+
+            return id;
+
+        } catch (IOException ex) {
+            throw new RuntimeException("Video processing fail!!");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

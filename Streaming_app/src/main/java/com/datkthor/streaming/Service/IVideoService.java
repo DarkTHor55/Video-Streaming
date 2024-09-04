@@ -18,5 +18,7 @@ public interface IVideoService {
     Video getVideoById(final String id);
 //    get by title
     Video getVideoByTitle(final String title);
+//    video proceesing
+    String videoProcessing(final String VideoId);
 
 }

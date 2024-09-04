@@ -1,0 +1,17 @@
+codec : method for ending and decoding (it is used for both audio and video formats).
+container : file format that holder mp4,avi ,etc  (container the actual content)
+Bitrate : number of bit process in one second (kbps,mbps,etc)
+Resolution : 1920*1080 ......
+
+
+
+HSL :Http live streaming (created by apple )
+it helps to split video  file into chunks
+
+hsl working in 3 diffrerent parts
+1. segmentation : video is split into small segments 2-10 seconds each
+2. master PlayList : Here indexing perform (means all segments get some index ) and their file format is .m3u8
+3. variant playlist : Here each video quality is level has its own playlist ,listing the URL's  of thier segent at that quality
+
+
+
